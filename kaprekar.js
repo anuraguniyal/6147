@@ -1,7 +1,9 @@
+var KC = 6174
+
 function Kaprekar_depth(n, visits){
   /* calculate iterations it takes to reach Kaprekar constant 6174 */
   var depth = 0;
-  while(n != 6174 && n != 0){
+  while(n != KC && n != 0){
     depth += 1;
     n = kaprekar_step(n);
     // count how many times a number is visited
@@ -67,6 +69,10 @@ function init(){
     for(var i=0; i < 10000; i++){
       if(visits[i] == 0) continue
       console.log(i, visits[i])
+      if(i == 6174)
+        ctx2.fillStyle = "red";
+      else
+        ctx2.fillStyle = "black";
       ctx2.beginPath();
       var r = Math.log(visits[i]);
       ctx2.ellipse(10+4*(i/100), 10+4*(i%100), r, r, 0, 0, 2*Math.PI);
